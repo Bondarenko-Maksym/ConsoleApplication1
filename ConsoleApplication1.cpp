@@ -1,9 +1,13 @@
-// Бондаренко Максим, варіант 1
+ // Бондаренко Максим, варіант 1
 //
 
 #include <iostream>
+#include <time.h>
+#include <stdlib.h>
 using namespace std;
+
 void Fill_arr(int* arr, int n) {
+    srand(time(NULL));
     for (int i = 0; i < n; i++)
         *(arr + i)=rand()%41-20;}
 void Print_arr(int* arr, int n) {
@@ -53,10 +57,34 @@ start:
         Print_arr(arr, n);
     }break;
     case 3: {
-        
+        int M = 20, a;
+        int* arr = new int[M];
+        Fill_arr(arr, M);
+        Print_arr(arr, M);
+        cout << endl;
+        int* newarr1 = new int[10];
+        a = 0;
+        for (int i = 0; i < M; i++) {
+            if (i % 2 != 0) { newarr1[a] = arr[i];
+            a++;
+            }
+        }
+        int* newarr2 = new int[10];
+        a = 0;
+        for (int i = 0; i < M; i++) {
+            if (i % 2 == 0) { newarr2[a] = arr[i];
+            a++;
+            }
+        }
+        delete[] arr;
+        cout << "Parni indeksi elementiv:";
+        Print_arr(newarr1, 10);
+        cout << endl;
+        cout << "Neparni indeksi elementiv:";
+        Print_arr(newarr2, 10);
     }break;
     default: {
-        cout << "Виберіть задачу 1-3";
+        cout << "Choose task 1-3"<<endl;
         goto start;
     }
     }
